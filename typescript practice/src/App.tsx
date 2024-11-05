@@ -44,16 +44,23 @@ function App() {
           <PokemonSearchForm onSearch={fetchPokemon} />
         </>
       ) : (
-        <>
-          <h1>{pokemonName}</h1>
-          <h3>Abilities:</h3>
-          <ol>
-            {pokemonData.abilities.map((ability, index) => (
-              <li key={index}>{ability.ability.name}</li>
-            ))}
-          </ol>
-          <PokemonSearchForm onSearch={fetchPokemon} />
-        </>
+        <div className="parent">
+          <div className="name-and-type-container">
+            <h1>{pokemonName}</h1>
+          </div>
+          <div className="pictures-container"> </div>
+          <div className="moves-and-abilities-container">
+            <h3>Abilities:</h3>
+            <ol>
+              {pokemonData.abilities.map((ability, index) => (
+                <li key={index}>{ability.ability.name}</li>
+              ))}
+            </ol>
+          </div>
+          <div className="search-container">
+            <PokemonSearchForm onSearch={fetchPokemon} />
+          </div>
+        </div>
       )}
     </>
   );
