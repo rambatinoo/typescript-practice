@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { getPokemon } from "./utils/api";
+import PokemonSearchForm from "./components/pokemonSearchForm";
 
 interface Ability {
   ability: {
@@ -18,7 +19,6 @@ interface Pokemon {
 }
 
 function App() {
-  const [pokemonNameInput, setPokemonNameInput] = useState<string>("");
   const [pokemonName, setPokemonName] = useState<string>("");
   const [pokemonData, setPokemonData] = useState<Pokemon>({
     name: "",
@@ -26,32 +26,24 @@ function App() {
     abilities: [],
   });
 
-  async function handleClick(e) {
-    e.preventDefault();
+  async function fetchPokemon(pokemonNameInput: string) {
     const fetchedPokemon = await getPokemon(pokemonNameInput);
 
     if (fetchedPokemon) {
       setPokemonName(pokemonNameInput);
       setPokemonData(fetchedPokemon);
-      console.dir(fetchedPokemon);
+      console.dir(fetchedPokemon); // TODO: remember to remove this when finished with it
     }
-    setPokemonNameInput("");
   }
 
   return (
     <>
-      <h1>Pokemon Information</h1>
-      <form>
-        <label>
-          Enter a Pokemon's Name
-          <input
-            type="text"
-            onChange={(e) => setPokemonNameInput(e.target.value)}
-          />
-        </label>
-        <button onClick={handleClick}>GO!</button>
-      </form>
-      {!pokemonName ? null : (
+      {!pokemonName ? (
+        <>
+          <h1>Pokemon Information</h1>
+          <PokemonSearchForm onSearch={fetchPokemon} />
+        </>
+      ) : (
         <>
           <h1>{pokemonName}</h1>
           <h3>Abilities:</h3>
@@ -60,6 +52,7 @@ function App() {
               <li key={index}>{ability.ability.name}</li>
             ))}
           </ol>
+          <PokemonSearchForm onSearch={fetchPokemon} />
         </>
       )}
     </>
