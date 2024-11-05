@@ -17,11 +17,15 @@ interface Move {
     url: string;
   };
 }
+interface Type {
+  type: { name: string };
+}
 interface Pokemon {
   name: string;
   id: number;
   abilities: Ability[];
   moves: Move[];
+  types: Type[];
 }
 
 function App() {
@@ -31,13 +35,16 @@ function App() {
     id: 0,
     abilities: [],
     moves: [],
+    types: [],
   });
 
   async function fetchPokemon(pokemonNameInput: string) {
     const fetchedPokemon = await getPokemon(pokemonNameInput);
 
     if (fetchedPokemon) {
-      setPokemonName(pokemonNameInput);
+      const capitalisedName =
+        pokemonNameInput.charAt(0).toUpperCase() + pokemonNameInput.slice(1);
+      setPokemonName(capitalisedName);
       setPokemonData(fetchedPokemon);
       console.dir(fetchedPokemon); // TODO: remember to remove this when finished with it
     }
@@ -53,12 +60,15 @@ function App() {
       ) : (
         <div className="parent">
           <div className="name-and-type-container">
-            <h1>{pokemonName}</h1>
+            <h1 className="pokemon-name">{pokemonName}</h1>
+            <h2 className="pokemon-type">
+              Type: {pokemonData.types[0].type.name}
+            </h2>
           </div>
           <div className="pictures-container"> </div>
           <div className="moves-and-abilities-container">
             <div className="moves">
-              <h3>Moves:</h3>
+              <h3>Moves</h3>
               <ol>
                 {pokemonData.moves.slice(0, 4).map((move, index) => (
                   <li key={index}>{move.move.name}</li>
@@ -66,7 +76,7 @@ function App() {
               </ol>
             </div>
             <div className="abilities">
-              <h3>Abilities:</h3>
+              <h3>Abilities</h3>
               <ol>
                 {pokemonData.abilities.map((ability, index) => (
                   <li key={index}>{ability.ability.name}</li>

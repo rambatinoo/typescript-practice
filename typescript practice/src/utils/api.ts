@@ -15,12 +15,15 @@ interface Move {
     url: string;
   };
 }
-
+interface Type {
+  type: { name: string };
+}
 interface Pokemon {
   name: string;
   id: number;
   abilities: Ability[];
   moves: Move[];
+  types: Type[];
 }
 
 export async function getPokemon(name: string): Promise<Pokemon | null> {
