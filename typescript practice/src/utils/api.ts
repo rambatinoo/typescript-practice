@@ -9,10 +9,18 @@ interface Ability {
   slot: number;
 }
 
+interface Move {
+  move: {
+    name: string;
+    url: string;
+  };
+}
+
 interface Pokemon {
   name: string;
   id: number;
   abilities: Ability[];
+  moves: Move[];
 }
 
 export async function getPokemon(name: string): Promise<Pokemon | null> {

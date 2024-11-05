@@ -11,11 +11,17 @@ interface Ability {
   is_hidden: boolean;
   slot: number;
 }
-
+interface Move {
+  move: {
+    name: string;
+    url: string;
+  };
+}
 interface Pokemon {
   name: string;
   id: number;
   abilities: Ability[];
+  moves: Move[];
 }
 
 function App() {
@@ -24,6 +30,7 @@ function App() {
     name: "",
     id: 0,
     abilities: [],
+    moves: [],
   });
 
   async function fetchPokemon(pokemonNameInput: string) {
@@ -50,12 +57,22 @@ function App() {
           </div>
           <div className="pictures-container"> </div>
           <div className="moves-and-abilities-container">
-            <h3>Abilities:</h3>
-            <ol>
-              {pokemonData.abilities.map((ability, index) => (
-                <li key={index}>{ability.ability.name}</li>
-              ))}
-            </ol>
+            <div className="moves">
+              <h3>Moves:</h3>
+              <ol>
+                {pokemonData.moves.slice(0, 4).map((move, index) => (
+                  <li key={index}>{move.move.name}</li>
+                ))}
+              </ol>
+            </div>
+            <div className="abilities">
+              <h3>Abilities:</h3>
+              <ol>
+                {pokemonData.abilities.map((ability, index) => (
+                  <li key={index}>{ability.ability.name}</li>
+                ))}
+              </ol>
+            </div>
           </div>
           <div className="search-container">
             <PokemonSearchForm onSearch={fetchPokemon} />
