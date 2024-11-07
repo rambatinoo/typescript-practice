@@ -78,7 +78,9 @@ function App() {
             </h2>
           </div>
           <div className="pictures-container">
-            <div className="normal-title"> </div>
+            <div className="normal-title">
+              <h2>Normal Appearance</h2>
+            </div>
             <div className="normal-front">
               <img
                 src={pokemonData.sprites.front_default}
@@ -91,7 +93,9 @@ function App() {
                 alt={`${pokemonName} back normal`}
               />
             </div>
-            <div className="shiny-title"> </div>
+            <div className="shiny-title">
+              <h2>Shiny Appearance</h2>
+            </div>
             <div className="shiny-front">
               <img
                 src={pokemonData.sprites.front_shiny}

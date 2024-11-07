@@ -33,6 +33,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: 10% 40% 10% 40%;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
@@ -53,6 +54,16 @@
 }
 .shiny-back {
   grid-area: 4 / 2 / 5 / 3;
+}
+.normal-title,
+.shiny-title {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  font-size: 1.2em;
+  margin: 0;
 }
 .pictures-container img {
   max-width: 100%;
