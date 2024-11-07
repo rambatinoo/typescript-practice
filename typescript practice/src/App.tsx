@@ -26,6 +26,12 @@ interface Pokemon {
   abilities: Ability[];
   moves: Move[];
   types: Type[];
+  sprites: {
+    front_default: string;
+    front_shiny: string;
+    back_default: string;
+    back_shiny: string;
+  };
 }
 
 function App() {
@@ -36,6 +42,12 @@ function App() {
     abilities: [],
     moves: [],
     types: [],
+    sprites: {
+      front_default: "",
+      front_shiny: "",
+      back_default: "",
+      back_shiny: "",
+    },
   });
 
   async function fetchPokemon(pokemonNameInput: string) {
@@ -65,7 +77,34 @@ function App() {
               Type: {pokemonData.types[0].type.name}
             </h2>
           </div>
-          <div className="pictures-container"> </div>
+          <div className="pictures-container">
+            <div className="normal-title"> </div>
+            <div className="normal-front">
+              <img
+                src={pokemonData.sprites.front_default}
+                alt={`${pokemonName} front normal`}
+              />
+            </div>
+            <div className="normal-back">
+              <img
+                src={pokemonData.sprites.back_default}
+                alt={`${pokemonName} back normal`}
+              />
+            </div>
+            <div className="shiny-title"> </div>
+            <div className="shiny-front">
+              <img
+                src={pokemonData.sprites.front_shiny}
+                alt={`${pokemonName} front shiny`}
+              />
+            </div>
+            <div className="shiny-back">
+              <img
+                src={pokemonData.sprites.back_shiny}
+                alt={`${pokemonName} back shiny`}
+              />
+            </div>
+          </div>
           <div className="moves-and-abilities-container">
             <div className="moves">
               <h3>Moves</h3>

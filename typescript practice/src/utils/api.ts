@@ -24,6 +24,12 @@ interface Pokemon {
   abilities: Ability[];
   moves: Move[];
   types: Type[];
+  sprites: {
+    front_default: string;
+    front_shiny: string;
+    back_default: string;
+    back_shiny: string;
+  };
 }
 
 export async function getPokemon(name: string): Promise<Pokemon | null> {
