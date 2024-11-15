@@ -63,7 +63,11 @@ function App() {
   }
 
   return (
-    <>
+    <div
+      className={`app-container ${
+        pokemonName ? pokemonData.types[0]?.type.name : ""
+      }`}
+    >
       {!pokemonName ? (
         <>
           <h1>Pokemon Information</h1>
@@ -132,7 +136,7 @@ function App() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

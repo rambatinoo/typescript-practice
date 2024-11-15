@@ -1,3 +1,33 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease-in-out;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: darkslategray;
+  color: azure;
+}
+
+.fire {
+  background-image: url("../src/assets/backgrounds/fire.jpg");
+}
+
+.grass {
+  background-image: url("../src/assets/backgrounds/grass.jpg");
+}
+
+.water {
+  background-image: url("../src/assets/backgrounds/water.jpeg");
+}
+
+.electric {
+  background-image: url("../src/assets/backgrounds/electric.jpg");
+}
+
 .parent {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
