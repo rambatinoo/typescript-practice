@@ -21,7 +21,7 @@
 }
 
 .water {
-  background-image: url("../src/assets/backgrounds/water.jpeg");
+  background-image: url("../src/assets/backgrounds/water.jpeg"); /* this isn't working - probably because its a jpeg - get a new picture */
 }
 
 .electric {
