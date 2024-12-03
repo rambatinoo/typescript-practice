@@ -115,20 +115,20 @@ function App() {
           </div>
           <div className="moves-and-abilities-container">
             <div className="moves">
-              <h3>Moves</h3>
-              <ol>
-                {pokemonData.moves.slice(0, 4).map((move, index) => (
-                  <li key={index}>{move.move.name}</li>
-                ))}
-              </ol>
+              <div className="moves-title">Moves</div>
+              {pokemonData.moves.slice(0, 4).map((move, index) => (
+                <div key={index} className="move-item">
+                  {move.move.name}
+                </div>
+              ))}
             </div>
             <div className="abilities">
-              <h3>Abilities</h3>
-              <ol>
-                {pokemonData.abilities.map((ability, index) => (
-                  <li key={index}>{ability.ability.name}</li>
-                ))}
-              </ol>
+              <div className="abilities-title">Abilities</div>
+              {pokemonData.abilities.slice(0, 2).map((ability, index) => (
+                <div key={index} className="ability-item">
+                  {ability.ability.name}
+                </div>
+              ))}
             </div>
           </div>
           <div className="search-container">
